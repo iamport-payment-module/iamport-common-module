@@ -9,10 +9,10 @@ export type LogStructure = {
           parameters: { [P in string]: any };
           timestamp: Date;
           elapsedTime: number;
-          error?: {
+          error: {
             callstack: string;
             message: string;
-          };
+          } | null;
         };
       };
       elapsedTime: number;
