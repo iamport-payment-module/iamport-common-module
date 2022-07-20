@@ -5,7 +5,7 @@ export type LogStructure = {
     [URLTimestamp: `${string}:${string}`]: {
       parameters: { [P in string]: any };
       functions: {
-        [Funtion: string]: {
+        [Function: string]: {
           parameters: { [P in string]: any };
           timestamp: Date;
           elapsedTime: number;
@@ -22,9 +22,10 @@ export type LogStructure = {
   };
 };
 
-type Monad<T> = {
-  data: T;
-  log: LogStructure;
+export type FunctorValue<T> = {
+  value: T;
+  log: null | LogStructure;
+  error: null | string;
 };
 
 export type MonadFunc<A = unknown, T = unknown> = (arg: Monad<A>) => Monad<T>;
